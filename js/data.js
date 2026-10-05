@@ -1,3 +1,58 @@
+// Structure des données
+/*
+
+{
+  "id": "terre",                  // String, identifiant de l'astre dans l'API.
+  "name": "La Terre",             // String, nom de l'astre (en français).
+  "englishName": "Earth",         // String, nom anglais de l'astre.
+  "isPlanet": true,               // Booleen, est-ce une planète?
+  "moons": [                      // Tableau, lune(s) de l'astre
+    {
+      [...]
+      "aroundPlanet": {           // Objet, pour un satellite, la planète autour de laquelle orbite l'astre.
+        "planet": "terre",        // String, nom de la planète
+        "rel": "lien"             // String, lien vers l'endpoint API de l'astre
+      }
+      [...]
+  ],
+  "semimajorAxis": 149598023,     // Nombre, le demi grand axe (km)
+  "perihelion": 147095000,        // Nombre, le périhélie (km)
+  "aphelion": 152100000,          // Nombre, l'aphélie (km)
+  "eccentricity": 0.0167,         // Nombre, l'aphélie (km)
+  "inclination": 0,               // Nombre, l'inclinaison orbitale (°)
+  "mass": {                       // Tableau Masse de l'astre (10^n kg)
+    "massValue": 5.97237,         // Nombre, masse de l'astre
+    "massExponent": 24            // Nombre, valeur de l'exposant
+  },
+  "vol": {                        // Tableau, volume de l'astre (10^n km^3)
+    "volValue": 1.08321,          // Nombre, volume de l'astre
+    "volExponent": 12             // Nombre, valeur de l'exposant
+  },
+  "density": 5.5136,              // Nombre, densité de l'astre (g.cm^3)
+  "gravity": 9.80665,             // Nombre, gravité en surface (m.s^-2)
+  "escape": 11190,                // Nombre, vitesse d'échappement (m.s^-1)
+  "meanRadius": 6371.0084,        // Nombre, le rayon moyen (km)
+  "equaRadius": 6378.1366,        // Nombre, le rayon équatorial (km)
+  "polarRadius": 6356.8,          // Nombre, le rayon polaire (km)
+  "flattening": 0.00335,          // Nombre, l'applatissement (?)
+  "dimension": "",                // String, dimension de l'astre en kilomètres sur 3 axes X, Y et Z pour les astres non sphériques.
+  "sideralOrbit": 365.256,        // Nombre, la période le révolution de l'astre autour d'un autre astre (le Soleil ou une planète) en jours terrestres.
+  "sideralRotation": 23.9345,     // Nombre, la période de rotation de l'astre, le temps nécessaire pour astre pour réaliser un tour sur lui même, en heure.
+  "aroundPlanet": null,           // Objet, pour un satellite, la planète autour de laquelle orbite l'astre.
+  "discoveredBy": "",             // String, nom du découvreur de l'astre.
+  "discoveryDate": "",            // String, date de découverte de l'astre
+  "alternativeName": "",          // String, désignation temporaire.
+  "axialTilt": 23.4393,           // Nombre, inclinaison sur l'axe.
+  "avgTemp": 288,                 // Nombre, température moyenne. (K)
+  "mainAnomaly": 358.617,         // Nombre, anomalie moyenne. (°)
+  "argPeriapsis": 85.901,         // Nombre, argument du périhélie. (°)
+  "longAscNode": 18.272,          // Nombre, nœud ascendant. (°)
+  "bodyType": "Planet",           // String, type d'astre : Star, Planet, Dwarf Planet, Asteroid, Comet ou Moon.
+  "rel": "lien"                   // String, lien vers l'endpoint API de l'astre
+}
+
+*/
+
 const planets = [
   {
     "id": "uranus",

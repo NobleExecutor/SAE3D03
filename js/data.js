@@ -15,10 +15,10 @@
       }
       [...]
   ],
-  "semimajorAxis": 149598023,     // Nombre, le demi grand axe (km)
-  "perihelion": 147095000,        // Nombre, le périhélie (km)
-  "aphelion": 152100000,          // Nombre, l'aphélie (km)
-  "eccentricity": 0.0167,         // Nombre, l'aphélie (km)
+  "semimajorAxis": 149598023,     // Nombre, le demi grand axe (km) (rayon de l'orbite)
+  "perihelion": 147095000,        // Nombre, le périhélie (km) (distance la plus courte au soleil)
+  "aphelion": 152100000,          // Nombre, l'aphélie (km) (distance la plus grande au soleil)
+  "eccentricity": 0.0167,         // Nombre, l'eccentricité (km) (applatissement de l'élipse)
   "inclination": 0,               // Nombre, l'inclinaison orbitale (°)
   "mass": {                       // Tableau Masse de l'astre (10^n kg)
     "massValue": 5.97237,         // Nombre, masse de l'astre

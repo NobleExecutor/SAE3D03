@@ -61,8 +61,55 @@ body {
 }
 
 .char-tag {
-    background-color: var(--tag-bg-color);
+    position: relative;
     padding: 12px;
     border-radius: 6px;
     font-family: ValvePulp;
+    z-index: 1;
+}
+
+.char-tag::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-color: var(--tag-bg-color);
+    padding: 12px;
+    border-radius: 6px;
+}
+
+.char-card:hover .char-tag:first-child::before {
+    animation: tag-wiggle-1 2s step-end infinite;
+}
+
+.char-card:hover .char-tag:nth-child(2)::before {
+    animation: tag-wiggle-2 2s step-end infinite;
+}
+
+.char-card:hover .char-tag:last-child::before {
+    animation: tag-wiggle-3 2s step-end infinite;
+}
+
+@keyframes tag-wiggle-1 {
+    0%   { transform: rotate(2deg); }
+    25%  { transform: rotate(-4deg); }
+    50%  { transform: rotate(8deg); }
+    75%  { transform: rotate(10deg); }
+    100% { transform: rotate(-7deg); }
+}
+
+@keyframes tag-wiggle-2 {
+    0%   { transform: rotate(-2deg); }
+    20%  { transform: rotate(6deg); }
+    40%  { transform: rotate(3deg); }
+    60%  { transform: rotate(-6deg); }
+    80% { transform: rotate(-4deg); }
+    100% { transform: rotate(7deg); }
+}
+
+@keyframes tag-wiggle-3 {
+    0%   { transform: rotate(1deg); }
+    33%  { transform: rotate(-3deg); }
+    66%  { transform: rotate(9deg); }
+    100% { transform: rotate(-8deg); }
 }

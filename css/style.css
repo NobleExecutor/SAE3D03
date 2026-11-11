@@ -12,6 +12,10 @@
 }
 
 body {
+    margin: 0;
+}
+
+main {
     background-color: var(--bg-primary);
     color: var(--text-primary);
     font-family: ValveOccult;

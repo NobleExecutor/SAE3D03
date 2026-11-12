@@ -4,15 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="https://assets-bucket.deadlock-api.com/assets-api-res/icons/icons/deadlock_logo.svg" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&display=swap">
     <link rel="stylesheet" href="css/fontface.css">
     <link rel="stylesheet" href="css/style.css">
     <title>SAE3D03</title>
 </head>
 <body>
-    <main>
+    <main class="landing">
+        <header class="landing-header">
+            <div class="landing-title">
+                <p class="eyebrow">Deadlock · Analytics des capacités</p>
+                <h1>Arbre vivant des builds</h1>
+                <p class="subtitle">Choisis un héros pour voir comment les joueurs montent ses capacités, et lesquelles gagnent.</p>
+            </div>
+            <label class="search">
+                <span class="visually-hidden">Rechercher un héros ou un tag</span>
+                <input type="search" class="search-input" placeholder="Rechercher un héros ou un tag…" autocomplete="off">
+            </label>
+        </header>
+
+        <div class="char-counter">
+            <h2>Tous les héros</h2>
+            <p class="char-count" aria-live="polite"></p>
+        </div>
+
         <div class="char-grid"></div>
+        <p class="char-empty" hidden>Aucun héros ne correspond à cette recherche.</p>
     </main>
-    
+
     <script src="js/api.js"></script>
     <script src="js/render.js"></script>
     <script src="js/tree.js"></script>

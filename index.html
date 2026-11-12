@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="https://assets-bucket.deadlock-api.com/assets-api-res/icons/icons/deadlock_logo.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="https://assets-bucket.deadlock-api.com/assets-api-res/icons/icons/deadlock_logo.svg"
+        type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&display=swap">
@@ -11,17 +13,20 @@
     <link rel="stylesheet" href="css/style.css">
     <title>SAE3D03</title>
 </head>
+
 <body>
     <main class="landing">
         <header class="landing-header">
             <div class="landing-title">
                 <p class="eyebrow">Deadlock · Analytics des capacités</p>
                 <h1>Arbre vivant des builds</h1>
-                <p class="subtitle">Choisis un héros pour voir comment les joueurs montent ses capacités, et lesquelles gagnent.</p>
+                <p class="subtitle">Choisis un héros pour voir comment les joueurs montent ses capacités, et lesquelles
+                    gagnent.</p>
             </div>
             <label class="search">
                 <span class="visually-hidden">Rechercher un héros ou un tag</span>
-                <input type="search" class="search-input" placeholder="Rechercher un héros ou un tag…" autocomplete="off">
+                <input type="search" class="search-input" placeholder="Rechercher un héros ou un tag…"
+                    autocomplete="off">
             </label>
         </header>
 
@@ -31,11 +36,16 @@
         </div>
 
         <div class="char-grid"></div>
+        <div class="loader-wrapper">
+            <l-bouncy size="45" speed="1.75" color="var(--text-primary)" id="loader"></l-bouncy>
+        </div>
         <p class="char-empty" hidden>Aucun héros ne correspond à cette recherche.</p>
     </main>
 
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/bouncy.js"></script>
     <script src="js/api.js"></script>
     <script src="js/render.js"></script>
     <script src="js/tree.js"></script>
 </body>
+
 </html>

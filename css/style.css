@@ -43,6 +43,12 @@ p {
     white-space: nowrap;
 }
 
+.loader-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* ---------- Landing ---------- */
 
 .landing {

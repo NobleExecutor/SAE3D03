@@ -6,6 +6,7 @@ const ENDPOINTS = {
     LIST_ITEMS: "v1/assets/items"
 };
 const FRENCH_PARAM = "language=french";
+const loader = document.querySelector("#loader");
 
 async function fetchData(endpoint, heroId) {
     try {
@@ -64,5 +65,9 @@ async function fetchData(endpoint, heroId) {
 
     catch (error) {
         console.error(`Error fetching data: ${error}`);
+    }
+
+    finally {
+        loader.hidden = true;
     }
 }

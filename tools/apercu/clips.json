@@ -1,0 +1,680 @@
+{
+  "1": {
+    "nom": "Infernus",
+    "modele": "models/heroes_wip/inferno/inferno.vmdl",
+    "clips": {
+      "hero_emote_idle_01": 5,
+      "hero_spicy_idle_01": 5,
+      "item_stand_idle": 2.87,
+      "out_of_combat_stand_idle": 2.87,
+      "shop_menu_base": 2.87,
+      "shopping_idle": 4.07,
+      "ui_hero_select": 0,
+      "ui_hero_spicy_idle": 5,
+      "ui_shop_idle": 2.87,
+      "weapon_stand_idle": 2.87
+    }
+  },
+  "2": {
+    "nom": "Seven",
+    "modele": "models/heroes_staging/gigawatt_prisoner/gigawatt_prisoner.vmdl",
+    "clips": {
+      "bindpose": 0,
+      "grenade_idle": 2.6,
+      "item_stand_idle": 2.6,
+      "out_of_combat_idle": 2.6,
+      "out_of_combat_stand_idle": 2.6,
+      "parry_to_idle": 1.12,
+      "pose_retarget_ASTRO": 0,
+      "pose_retarget_GENMAN_2handed": 0,
+      "primary_idle": 3.25,
+      "primary_stand_idle": 3.25,
+      "primary_stand_idle_lean_r": 2.6,
+      "self_primary_aim_idle": 2.6,
+      "shopping": 3.4,
+      "ui_hero_pose": 0.23,
+      "ui_hero_select": 0,
+      "ui_hero_select_storm_cloud": 0,
+      "ui_idle_in_air": 0,
+      "weapon_stand_idle": 2.6,
+      "weapon_to_out_of_combat_idle": 1.33,
+      "zoomed_stand_idle": 2.6
+    }
+  },
+  "3": {
+    "nom": "Vindicta",
+    "modele": "models/heroes_staging/hornet_v3/hornet.vmdl",
+    "clips": {
+      "bindpose": 0,
+      "corner_lean_idle": 0,
+      "idle_loadout": 4.67,
+      "item_stand_idle": 4,
+      "out_of_combat_stand_idle": 4,
+      "parry_to_idle": 1,
+      "pose_retarget_ASTRO": 0,
+      "pose_retarget_GENMAN_2handed": 0,
+      "primary_idle_fire_one_shot": 0.6,
+      "primary_stand_idle": 4,
+      "primary_stand_idle_lean_r": 4,
+      "primary_stand_zoomed_idle": 4,
+      "rebirth_countdown_idle": 4.67,
+      "shopping": 4.67,
+      "shopping_stand_idle": 4.67,
+      "sleep_stand_idle": 2.67,
+      "ui_hero_info": 4.67,
+      "ui_hero_pose": 0.17,
+      "ui_hero_pose_ag2": 0,
+      "ui_hero_select": 4.67,
+      "ui_hero_select_fly": 0,
+      "ui_main_menu": 4.67,
+      "ui_matchmaking": 4.67,
+      "ui_pose": 4,
+      "weapon_stand_idle": 4
+    }
+  },
+  "4": {
+    "nom": "Dame Geist",
+    "modele": "models/heroes_wip/geist/geist.vmdl",
+    "clips": {
+      "bloodbomb_stand_idle": 2,
+      "corner_lean_idle": 0.5,
+      "lifedrain_stand_idle": 2,
+      "lifedrain_teathered_idle": 2,
+      "out_of_combat_stand_idle": 2,
+      "shopping_stand_idle": 5.6,
+      "sleep_stand_idle": 1.33,
+      "ui_hero_select": 1,
+      "weapon_stand_idle": 2
+    }
+  },
+  "6": {
+    "nom": "Abrams",
+    "modele": "models/heroes_wip/abrams/abrams.vmdl",
+    "clips": {
+      "hideout_stand_idle": 3,
+      "item_stand_idle": 3,
+      "out_of_combat_stand_idle": 3,
+      "sleep_idle": 2,
+      "syphon_item_idle": 3,
+      "syphon_stand_idle": 3,
+      "ui_hero_select": 0,
+      "ui_shop_idle": 3,
+      "weapon_stand_idle": 3
+    }
+  },
+  "7": {
+    "nom": "Scopa",
+    "modele": "models/heroes_wip/wraith/wraith.vmdl",
+    "clips": {
+      "item_stand_idle": 3,
+      "out_of_combat_stand_idle": 3,
+      "shopping_idle": 3,
+      "sleep_idle": 3,
+      "ui_hero_select": 3,
+      "ui_shop_idle": 3,
+      "weapon_stand_idle": 3,
+      "weapon_to_out_of_combat_idle": 1.2
+    }
+  },
+  "8": {
+    "nom": "McGinnis",
+    "modele": "models/heroes_wip/mcginnis/mcginnis.vmdl",
+    "clips": {
+      "ability_canister_idle_on": 2.8,
+      "ability_heavybarrage_idle": 0,
+      "ability_idle": 2.8,
+      "ability_idle_sentry_on": 2.8,
+      "hero_pose": 0.1,
+      "out_of_combat_stand_idle": 2.8,
+      "weapon_stand_idle": 2.8
+    }
+  },
+  "10": {
+    "nom": "Paradox",
+    "modele": "models/heroes_staging/chrono/chrono.vmdl",
+    "clips": {
+      "ability_pulse_grenade_stand_idle": 3.93,
+      "item_stand_idle": 4,
+      "out_of_combat_stand_idle": 4,
+      "shopping_idle": 5.6,
+      "sleep_idle": 2.67,
+      "ui_hero_select": 16.67,
+      "ui_shop_idle": 3.93,
+      "weapon_stand_idle": 4
+    }
+  },
+  "11": {
+    "nom": "Dynamo",
+    "modele": "models/heroes_wip/dynamo/dynamo.vmdl",
+    "clips": {
+      "hideout_stand_idle": 2.63,
+      "idle_transition_to_ooc": 1.5,
+      "ui_hero_emote": 7.5,
+      "ui_pose": 0.03,
+      "ui_shop_idle": 3.3,
+      "weapon_stand_idle": 2.63
+    }
+  },
+  "13": {
+    "nom": "Nébula",
+    "modele": "models/heroes_staging/haze/haze.vmdl",
+    "clips": {
+      "idle_hideout": 1.83,
+      "invis_stand_idle": 1.13,
+      "item_stand_idle": 0,
+      "shopping_idle": 3.77,
+      "sleep_idle": 2.67,
+      "ui_hero_emote_01": 5.13,
+      "ui_hero_info": 1.83,
+      "ui_hero_select": 0,
+      "ui_main_menu": 0,
+      "ui_matchmaking": 0,
+      "ui_shop": 1.83,
+      "weapon_stand_idle": 1.83
+    }
+  },
+  "14": {
+    "nom": "Holliday",
+    "modele": "models/heroes_staging/astro/astro.vmdl",
+    "clips": {
+      "item_stand_idle": 2.67,
+      "lasso_idle": 1.6,
+      "out_of_combat_stand_idle": 2.67,
+      "parry_to_idle": 1,
+      "shopping_idle": 2.67,
+      "sleep_idle": 2.67,
+      "ui_hero_select": 0,
+      "weapon_stand_idle": 2.67
+    }
+  },
+  "15": {
+    "nom": "Bebop",
+    "modele": "models/heroes_staging/bebop/bebop.vmdl",
+    "clips": {
+      "hyperbeam_charge_idle": 0.5,
+      "hyperbeam_fire_idle": 1,
+      "item_stand_idle": 2,
+      "out_of_combat_idle": 4,
+      "out_of_combat_stand_idle": 4,
+      "sleep_idle": 2,
+      "ui_hero_select": 6.67,
+      "weapon_stand_idle": 4,
+      "zoomed_stand_idle": 2
+    }
+  },
+  "16": {
+    "nom": "Calico",
+    "modele": "models/heroes_staging/nano/nano_v2/nano.vmdl",
+    "clips": {
+      "ability_idle": 3.17,
+      "ability_shock_idle": 1.2,
+      "ability_transition_to_idle": 0.93,
+      "item_stand_idle": 3.17,
+      "out_of_combat_stand_idle": 3.17,
+      "shopping_idle": 4.87,
+      "sleep_idle": 4,
+      "ui_hero_info": 3.17,
+      "ui_hero_select": 3.17,
+      "ui_matchmaking": 9.83,
+      "ui_shop_idle": 3.17,
+      "weapon_stand_idle": 3.17
+    }
+  },
+  "17": {
+    "nom": "Serregrise",
+    "modele": "models/heroes_staging/archer/archer.vmdl",
+    "clips": {
+      "ability_charged_shot_idle": 0,
+      "hideout_stand_idle": 2.97,
+      "item_stand_idle": 2.97,
+      "shopping_idle": 4.23,
+      "sleep_idle": 8.9,
+      "ui_hero_info": 11.83,
+      "ui_hero_select": 11.83,
+      "ui_main_menu": 11.83,
+      "ui_matchmaking": 11.83,
+      "ui_shop": 2.97,
+      "weapon_stand_idle": 2.97
+    }
+  },
+  "18": {
+    "nom": "Miro et Minus",
+    "modele": "models/heroes_staging/digger/digger.vmdl",
+    "clips": {
+      "corner_lean_idle": 1.21,
+      "item_stand_idle": 2,
+      "out_of_combat_stand_idle": 1.25,
+      "shopping_stand_idle": 1.25,
+      "sleep_stand_idle": 5,
+      "ui_hero_select": 0.87,
+      "weapon_stand_idle": 1.25
+    }
+  },
+  "19": {
+    "nom": "Surin",
+    "modele": "models/heroes_staging/shiv/shiv.vmdl",
+    "clips": {
+      "item_stand_idle": 4,
+      "shopping_idle": 4,
+      "sleep_idle": 2.67,
+      "ui_hero_select": 0,
+      "weapon_stand_idle": 4
+    }
+  },
+  "27": {
+    "nom": "Yamato",
+    "modele": "models/heroes_staging/yamato_v2/yamato.vmdl",
+    "clips": {
+      "hideout_stand_idle": 0,
+      "item_stand_idle": 0,
+      "out_of_combat_stand_idle": 0,
+      "sleep_idle": 0,
+      "ui_hero_select": 0.3,
+      "weapon_stand_idle": 0
+    }
+  },
+  "35": {
+    "nom": "Myxo",
+    "modele": "models/heroes_staging/viscous/viscous.vmdl",
+    "clips": {
+      "ui_hero_select": 4.27
+    }
+  },
+  "50": {
+    "nom": "Pocket",
+    "modele": "models/heroes_wip/pocket/pocket.vmdl",
+    "clips": {
+      "item_stand_idle": 3.97,
+      "out_of_combat_idle": 3.97,
+      "out_of_combat_stand_idle": 3.97,
+      "parry_to_idle": 1.13,
+      "shopping_idle": 5.67,
+      "sleep_idle": 2.67,
+      "ui_hero_select": 3,
+      "ui_hero_spicy_idle": 4.7,
+      "weapon_stand_idle": 3.97
+    }
+  },
+  "52": {
+    "nom": "Mirage",
+    "modele": "models/heroes_staging/mirage_v2/mirage.vmdl",
+    "clips": {
+      "corner_lean_idle": 0,
+      "item_stand_idle": 3.3,
+      "land_impact_idle": 0.83,
+      "out_of_combat_stand_idle": 3.3,
+      "parry_idle": 0.83,
+      "sleep_stand_idle": 0.3,
+      "ui_hero_info": 0.2,
+      "ui_main_menu": 0.2,
+      "ui_matchmaking": 0.2,
+      "ui_shop": 3.3,
+      "weapon_stand_idle": 3.3
+    }
+  },
+  "58": {
+    "nom": "Vypère",
+    "modele": "models/heroes_staging/viper/viper.vmdl",
+    "clips": {
+      "item_stand_idle": 2,
+      "out_of_combat_idle": 2,
+      "primary_stand_idle_lean_r": 2,
+      "sleep_idle": 1.67,
+      "ui_main_menu": 1.54,
+      "ui_matchmaking": 1.8,
+      "ui_pose": 0,
+      "weapon_stand_idle": 2
+    }
+  },
+  "60": {
+    "nom": "Sinclair",
+    "modele": "models/heroes_staging/magician_v2/magician.vmdl",
+    "clips": {
+      "primary_stand_idle": 3
+    }
+  },
+  "63": {
+    "nom": "Mina",
+    "modele": "models/heroes_wip/vampirebat/vampirebat.vmdl",
+    "clips": {
+      "here_emote_idle_01": 4.93,
+      "item_stand_idle": 2,
+      "vampirebat_outofcombat_stand_idle": 2,
+      "vampirebat_parry_to_idle": 1,
+      "vampirebat_primary_stand_idle_lean_r": 0,
+      "vampirebat_shopping": 4.87,
+      "vampirebat_ui_pose_alt": 0,
+      "vampirebat_weapon_stand_idle": 2
+    }
+  },
+  "64": {
+    "nom": "Rôdeur",
+    "modele": "models/heroes_wip/drifter/drifter.vmdl",
+    "clips": {
+      "item_stand_idle": 4,
+      "ooc_to_weapon_idle": 0.47,
+      "out_of_combat_stand_idle": 4,
+      "sleep_idle": 2,
+      "ui_hero_info": 8,
+      "ui_hero_select": 0.17,
+      "ui_hero_spicy_idle": 5.47,
+      "ui_main_menu": 0.17,
+      "ui_matchmaking": 0.17,
+      "ui_shop_idle": 8,
+      "weapon_stand_idle": 4,
+      "weapon_to_ooc_idle": 0.67
+    }
+  },
+  "65": {
+    "nom": "Venator",
+    "modele": "models/heroes_wip/priest/priest.vmdl",
+    "clips": {
+      "crossbow_item_stand_idle": 3.33,
+      "crossbow_stand_idle": 2.73,
+      "item_stand_idle": 3.33,
+      "out_of_combat_stand_idle": 3.33,
+      "sleep_idle": 2.67,
+      "ui_hero_info": 6.67,
+      "ui_hero_select": 0,
+      "ui_main_menu": 0.17,
+      "ui_shop": 6.67,
+      "weapon_stand_idle": 3.33
+    }
+  },
+  "66": {
+    "nom": "Victor",
+    "modele": "models/heroes_wip/frank/frank.vmdl",
+    "clips": {
+      "hideout_stand_idle": 3.63,
+      "injured_stand_idle": 3.63,
+      "item_stand_idle": 3.63,
+      "out_of_combat_stand_idle": 3.63,
+      "shop_ui_idle": 3.63,
+      "shopping_idle": 3.3,
+      "sleep_idle": 3,
+      "ui_hero_select": 0.13,
+      "ui_hero_spicy_idle": 5.27,
+      "weapon_stand_idle": 3.63,
+      "weapon_to_ooc_idle_transition": 1.9
+    }
+  },
+  "67": {
+    "nom": "Paige",
+    "modele": "models/heroes_wip/bookworm/bookworm.vmdl",
+    "clips": {
+      "ability_excalibur_stand_idle": 1.33,
+      "item_stand_idle": 1.33,
+      "out_of_combat_idle": 1.33,
+      "out_of_combat_stand_idle": 1.33,
+      "ui_hero_select": 0,
+      "weapon_stand_idle": 1.33
+    }
+  },
+  "69": {
+    "nom": "Le Portier",
+    "modele": "models/heroes_wip/doorman_v2/doorman.vmdl",
+    "clips": {
+      "ability_call_bell_idle": 0.73,
+      "ability_doorway_idle": 0.53,
+      "ability_luggage_cart_idle": 0.93,
+      "item_stand_idle": 3.33,
+      "out_of_combat_stand_idle": 3.33,
+      "shopping_idle": 3.33,
+      "sleep_idle": 0,
+      "ui_hero_select": 0,
+      "ui_hero_spicy_idle": 5.83,
+      "ui_main_menu": 0,
+      "ui_shop_idle": 4.93,
+      "weapon_stand_idle": 3.33,
+      "weapon_to_out_of_combat_idle": 2.53,
+      "zoomed_stand_idle": 3.33
+    }
+  },
+  "72": {
+    "nom": "Billy",
+    "modele": "models/heroes_wip/punkgoat/punkgoat.vmdl",
+    "clips": {
+      "corner_lean_idle": 1.27,
+      "item_stand_idle": 1.53,
+      "out_of_combat_stand_idle": 1.53,
+      "ui_hero_select": 0,
+      "ui_hero_spicy_idle": 5.23,
+      "ui_shop": 1.53,
+      "weapon_stand_idle": 1.53
+    }
+  },
+  "76": {
+    "nom": "Tombale",
+    "modele": "models/heroes_wip/necro/necro.vmdl",
+    "clips": {
+      "item_stand_idle": 3.33,
+      "jar_of_dead_stand_idle": 6.67,
+      "out_of_combat_stand_idle": 6.67,
+      "ui_hero_info": 6.67,
+      "ui_hero_select": 0.1,
+      "ui_main_menu": 0.1,
+      "ui_matchmaking": 0.1,
+      "ui_shop": 6.67,
+      "weapon_stand_idle": 6.67,
+      "weapon_to_ooc_stand_idle": 1.27
+    }
+  },
+  "77": {
+    "nom": "Apollon",
+    "modele": "models/heroes_wip/fencer/fencer.vmdl",
+    "clips": {
+      "corner_lean_idle": 0,
+      "idle_aim": 1.0,
+      "idle_ooc_aim": 1.0,
+      "item_stand_idle": 1.33,
+      "land_impact_idle": 0.97,
+      "out_of_combat_stand_idle": 2,
+      "parry_idle": 0.83,
+      "shopping_idle": 3,
+      "sleep_stand_idle": 1,
+      "ui_hero_mvp": 0,
+      "ui_hero_select": 0,
+      "ui_hero_spicy_idle": 5,
+      "ui_shop": 5.67,
+      "weapon_stand_idle": 1.33
+    }
+  },
+  "78": {
+    "nom": "Danny la Dépouille",
+    "modele": "models/heroes_wip/deadpack/deadpack.vmdl",
+    "clips": {
+      "ability_ult_intro_pose": 0,
+      "item_stand_idle": 3.87,
+      "shopping_idle": 5.67,
+      "sleep_idle": 6,
+      "ui_main_menu": 0.17,
+      "ui_shop": 8.2,
+      "weapon_stand_idle": 3.87
+    }
+  },
+  "79": {
+    "nom": "Rem",
+    "modele": "models/heroes_wip/familiar/familiar_wip.vmdl",
+    "clips": {
+      "ability_stand_idle": 1.27,
+      "item_stand_idle": 1.27,
+      "out_of_combat_stand_idle": 1.27,
+      "pillow_toss_stand_idle": 1.27,
+      "sleep_idle": 0,
+      "ui_hero_select": 0,
+      "ui_postgame": 0,
+      "ui_shop": 2.5,
+      "weapon_stand_idle": 1.27,
+      "weapon_stand_idle_long": 5.07
+    }
+  },
+  "80": {
+    "nom": "Silver",
+    "modele": "models/heroes_wip/werewolf/werewolf.vmdl",
+    "clips": {
+      "ability_entangling_bola_idle": 0.93,
+      "item_stand_idle": 1.87,
+      "out_of_combat_stand_idle": 1.87,
+      "shopping_idle": 3.4,
+      "sleep_idle": 3.53,
+      "ui_hero_info": 0,
+      "ui_hero_select": 0,
+      "ui_main_menu": 0.17,
+      "ui_matchmaking": 0,
+      "ui_shop": 2.33,
+      "weapon_stand_idle": 1.87,
+      "weapon_to_out_of_combat_idle": 1.87
+    }
+  },
+  "81": {
+    "nom": "Céleste",
+    "modele": "models/heroes_wip/unicorn/unicorn.vmdl",
+    "clips": {
+      "ability_radiant_daggers_stand_idle": 1.9,
+      "combat_to_idle_transition": 1,
+      "item_stand_idle": 1.9,
+      "out_of_combat_stand_idle": 1.9,
+      "shopping_idle": 5.6,
+      "sleep_idle": 0,
+      "ui_hero_select": 0,
+      "ui_shop": 1.9,
+      "weapon_stand_idle": 1.9
+    }
+  },
+  "84": {
+    "nom": "Roi des rats",
+    "modele": "models/heroes_wip/ratking/ratking.vmdl",
+    "clips": {
+      "ability_scrap_grenade_idle": 2.57,
+      "corner_lean_idle": 0.97,
+      "idle_to_ooc_idle": 0.67,
+      "out_of_combat_idle": 2.57,
+      "sleep_stand_idle": 2.57,
+      "ui_hero_select": 0.33,
+      "ui_shop_idle": 2.57,
+      "weapon_stand_idle": 2.57
+    }
+  },
+  "85": {
+    "nom": "Salomon",
+    "modele": "models/heroes_wip/chessmaster/chessmaster.vmdl",
+    "clips": {
+      "ability_bishop_end": 1,
+      "ability_bishop_stand_idle": 3.27,
+      "ability_knight_stand_idle": 3.27,
+      "ability_queen_stand_idle": 3.27,
+      "item_stand_idle": 3.27,
+      "out_of_combat_stand_idle": 3.27,
+      "ui_hero_info": 0,
+      "ui_hero_select": 0.3,
+      "ui_main_menu": 0,
+      "ui_matchmaking": 0,
+      "ui_shop": 6.63,
+      "weapon_stand_idle": 3.27,
+      "weapon_to_ooc_stand_idle": 2.73
+    }
+  },
+  "86": {
+    "nom": "Violette",
+    "modele": "models/heroes_wip/artist/artist.vmdl",
+    "clips": {
+      "ability_pullbrush_stand_idle": 7.33,
+      "item_stand_idle": 5.63,
+      "out_of_combat_stand_idle": 5.63,
+      "ui_hero_info": 5.63,
+      "ui_hero_select": 0.2,
+      "ui_main_menu": 0.2,
+      "ui_matchmaking": 0.2,
+      "ui_shop": 5.63,
+      "weapon_ooc_idle": 0.67,
+      "weapon_stand_idle": 5.63
+    }
+  },
+  "87": {
+    "nom": "Infirmière Harrow",
+    "modele": "models/heroes_wip/nurse/nurse.vmdl",
+    "clips": {
+      "cloak_idle_looping": 3.97,
+      "eye_idle_looping": 11.97,
+      "eye_idle_looping_leeches": 11.97,
+      "item_stand_idle": 2,
+      "outofcombat_stand_idle": 2,
+      "parry_to_idle": 0.8,
+      "primary_stand_idle_lean_r": 0.3,
+      "shopping": 4.87,
+      "ui_hero_select": 0.33,
+      "ui_shop": 5.9,
+      "weapon_stand_idle": 2,
+      "weapon_stand_idle_cape": 4
+    }
+  },
+  "88": {
+    "nom": "Baba",
+    "modele": "models/heroes_wip/baba/baba.vmdl",
+    "clips": {
+      "item_stand_idle": 4,
+      "out_of_combat_stand_idle": 4,
+      "outofcombat_stand_idle": 4,
+      "pigeon_calm_idle_01": 3,
+      "pigeon_calm_idle_02": 4.33,
+      "pigeon_calm_idle_03": 4,
+      "sleep_idle": 7.83,
+      "ui_main_menu": 0,
+      "ui_shop": 0,
+      "weapon_stand_idle": 4
+    }
+  },
+  "12": {
+    "nom": "Kelvin",
+    "modele": "models/heroes_staging/kelvin_v2/kelvin.vmdl",
+    "clips": {
+      "icebeam_idle": 0,
+      "item_stand_idle": 2.73,
+      "out_of_combat_idle": 4.27,
+      "shopping_idle": 4.27,
+      "ui_hero_select": 1.19,
+      "weapon_stand_idle": 4.27
+    }
+  },
+  "20": {
+    "nom": "Lyanne",
+    "modele": "models/heroes_wip/ivy/ivy.vmdl",
+    "clips": {
+      "item_stand_idle": 2,
+      "land_impact_idle": 1.07,
+      "out_of_combat_idle": 2,
+      "primary_stand_idle_lean_r": 2,
+      "ui_hero_select": 1.67,
+      "weapon_idle": 2
+    }
+  },
+  "25": {
+    "nom": "Marshal",
+    "modele": "models/heroes_staging/warden/warden.vmdl",
+    "clips": {
+      "ability_last_stand_idle": 2.25,
+      "item_stand_idle": 2.73,
+      "out_of_combat_idle": 4.27,
+      "shopping_idle": 5.67,
+      "sleep_idle": 2.67,
+      "ui_hero_select": 2.73,
+      "weapon_stand_idle": 4.27
+    }
+  },
+  "31": {
+    "nom": "Cravache",
+    "modele": "models/heroes_wip/lash/lash.vmdl",
+    "clips": {
+      "idle_transition_to_ooc": 0.97,
+      "item_stand_idle": 1.67,
+      "out_of_combat_stand_idle": 1.67,
+      "pose_retarget": 0,
+      "shopping_idle": 3.3,
+      "sleep_idle": 3,
+      "ui_hero_emote_02": 5.23,
+      "ui_pose": 0,
+      "ui_shop_idle": 1.67,
+      "weapon_stand_idle": 1.67
+    }
+  }
+}

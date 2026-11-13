@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aperçu des modèles 3D — SAE3D03</title>
+    <!-- Outil de développement : compare les clips exportés par tools/export_hero_models.py
+         avec le modèle actuel de l'API. À servir en HTTP depuis la racine du dépôt. -->
+    <!-- Les .glb (les nôtres comme ceux de l'API) sont compressés en meshopt : model-viewer
+         n'a pas de décodeur meshopt par défaut, il faut lui indiquer où le charger, avant le script. -->
+    <script>
+        self.ModelViewerElement = {
+            meshoptDecoderLocation: 'https://cdn.jsdelivr.net/npm/meshoptimizer@0.22.0/meshopt_decoder.js'
+        };
+    </script>
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+    <style>
+        :root {
+            --bg: #0E0F12;
+            --card: #1A1C22;
+            --border: #33363D;
+            --text: #EDE6D6;
+            --muted: #94918C;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            margin: 0;
+            padding: 24px;
+            background: var(--bg);
+            color: var(--text);
+            font: 14px/1.5 system-ui, sans-serif;
+        }
+
+        h1 { margin: 0 0 4px; font-size: 20px; }
+        p { margin: 0 0 16px; color: var(--muted); }
+
+        .barre {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+
+        select, button {
+            padding: 6px 10px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: var(--card);
+            color: var(--text);
+            font: inherit;
+        }
+
+        .vues {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .vue {
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: var(--card);
+            overflow: hidden;
+        }
+
+        .vue header {
+            display: flex;
+            justify-content: space-between;
+            gap: 8px;
+            padding: 10px 14px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .vue header span { color: var(--muted); }
+
+        model-viewer {
+            width: 100%;
+            height: 70vh;
+            background: radial-gradient(circle at 50% 40%, #23262e, var(--bg));
+        }
+
+        .clips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            padding: 10px 14px;
+            border-top: 1px solid var(--border);
+        }
+
+        .clips button.actif {
+            border-color: var(--text);
+        }
+
+        .clips small { color: var(--muted); }
+    </style>
+</head>
+<body>
+    <h1>Aperçu des modèles 3D</h1>
+    <p>À gauche, l'export du dépôt (un bouton par clip) ; à droite, le modèle actuellement servi par l'API. Glisser pour tourner, molette pour zoomer.</p>
+
+    <div class="barre">
+        <label>Héros <select id="heros"></select></label>
+        <button id="rotation">Rotation auto : non</button>
+    </div>
+
+    <div class="vues">
+        <section class="vue">
+            <header><strong>Nouvel export</strong><span id="infos-export"></span></header>
+            <model-viewer id="export" camera-controls autoplay shadow-intensity="1" exposure="1.1" environment-image="neutral"></model-viewer>
+            <div class="clips" id="clips"></div>
+        </section>
+        <section class="vue">
+            <header><strong>API actuelle (hero_select.glb)</strong><span id="infos-api"></span></header>
+            <model-viewer id="api" camera-controls autoplay shadow-intensity="1" exposure="1.1" environment-image="neutral"></model-viewer>
+        </section>
+    </div>
+
+    <script>
+        const BUCKET = 'https://assets-bucket.deadlock-api.com/assets-api-res/models/';
+
+        const selectHeros = document.getElementById('heros');
+        const vueExport = document.getElementById('export');
+        const vueApi = document.getElementById('api');
+        const listeClips = document.getElementById('clips');
+        let index = {};
+
+        function chemin(modele) {
+            // "models/heroes_wip/familiar/familiar_wip.vmdl" -> "heroes_wip/familiar/familiar_wip"
+            return modele.replace(/^models\//, '').replace(/\.vmdl$/, '');
+        }
+
+        function choisirClip(nom) {
+            vueExport.animationName = nom;
+            vueExport.currentTime = 0;
+            vueExport.play();
+            for (const b of listeClips.querySelectorAll('button')) {
+                b.classList.toggle('actif', b.dataset.clip === nom);
+            }
+            const duree = index[selectHeros.value].clips[nom];
+            document.getElementById('infos-export').textContent =
+                nom + ' · ' + (duree > 0 ? duree + ' s, en boucle' : 'pose fixe');
+        }
+
+        function afficherHeros(id) {
+            const heros = index[id];
+            vueExport.src = 'models/' + id + '.glb';
+            vueApi.src = BUCKET + chemin(heros.modele) + '/hero_select.glb';
+            document.getElementById('infos-api').textContent = chemin(heros.modele);
+
+            let html = '';
+            for (const [nom, duree] of Object.entries(heros.clips)) {
+                html += `<button data-clip="${nom}">${nom} <small>${duree > 0 ? duree + ' s' : 'fixe'}</small></button>`;
+            }
+            listeClips.innerHTML = html;
+            // Par défaut, la même pose que l'API (ui_hero_select) pour comparer.
+            const parDefaut = 'ui_hero_select' in heros.clips ? 'ui_hero_select' : Object.keys(heros.clips)[0];
+            vueExport.addEventListener('load', () => choisirClip(parDefaut), { once: true });
+        }
+
+        listeClips.addEventListener('click', (e) => {
+            const bouton = e.target.closest('button');
+            if (bouton) choisirClip(bouton.dataset.clip);
+        });
+
+        for (const vue of [vueExport, vueApi]) {
+            vue.addEventListener('error', (e) => {
+                const infos = document.getElementById(vue === vueExport ? 'infos-export' : 'infos-api');
+                infos.textContent = 'Erreur de chargement : ' + (e.detail?.sourceError?.message ?? e.detail?.type ?? 'voir la console');
+            });
+        }
+
+        selectHeros.addEventListener('change', () => afficherHeros(selectHeros.value));
+
+        document.getElementById('rotation').addEventListener('click', (e) => {
+            const actif = !vueExport.autoRotate;
+            vueExport.autoRotate = vueApi.autoRotate = actif;
+            e.target.textContent = 'Rotation auto : ' + (actif ? 'oui' : 'non');
+        });
+
+        fetch('clips.json')
+            .then((r) => r.json())
+            .then((data) => {
+                index = data;
+                // Héros triés par nom ; Rem par défaut s'il est exporté.
+                selectHeros.innerHTML = Object.entries(index)
+                    .sort((a, b) => (a[1].nom || '').localeCompare(b[1].nom || '', 'fr'))
+                    .map(([id, h]) => `<option value="${id}">${h.nom || 'Héros'} (${id}) · ${Object.keys(h.clips).length} clips</option>`)
+                    .join('');
+                if (index[79]) selectHeros.value = '79';
+                afficherHeros(selectHeros.value);
+            });
+    </script>
+</body>
+</html>

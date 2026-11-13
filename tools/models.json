@@ -1,0 +1,5 @@
+{
+    "_aide": "Clips exportés par héros pour le site (python3 tools/export_hero_models.py final). Le premier clip est joué par défaut. Choix provisoires : à confirmer dans tools/apercu/.",
+    "79": { "nom": "Rem", "clips": ["weapon_stand_idle_long", "ui_hero_select"] },
+    "67": { "nom": "Paige", "clips": ["out_of_combat_stand_idle", "ui_hero_select"] }
+}

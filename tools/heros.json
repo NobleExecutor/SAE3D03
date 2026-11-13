@@ -1,0 +1,11 @@
+{
+    "_aide": "Héros actifs (GET /v1/assets/heroes?only_active=true&language=french, novembre 2026) : hero_id -> nom. Sert aux commandes « apercu tous » et à la page d'aperçu.",
+    "6": "Abrams", "77": "Apollon", "88": "Baba", "15": "Bebop", "72": "Billy", "16": "Calico",
+    "81": "Céleste", "31": "Cravache", "4": "Dame Geist", "78": "Danny la Dépouille", "11": "Dynamo",
+    "14": "Holliday", "1": "Infernus", "87": "Infirmière Harrow", "12": "Kelvin", "69": "Le Portier",
+    "20": "Lyanne", "25": "Marshal", "8": "McGinnis", "63": "Mina", "52": "Mirage", "18": "Miro et Minus",
+    "35": "Myxo", "13": "Nébula", "67": "Paige", "10": "Paradox", "50": "Pocket", "79": "Rem",
+    "64": "Rôdeur", "84": "Roi des rats", "85": "Salomon", "7": "Scopa", "17": "Serregrise", "2": "Seven",
+    "80": "Silver", "60": "Sinclair", "19": "Surin", "76": "Tombale", "65": "Venator", "66": "Victor",
+    "3": "Vindicta", "86": "Violette", "58": "Vypère", "27": "Yamato"
+}

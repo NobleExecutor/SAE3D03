@@ -1,3 +1,9 @@
 .vscode/*
 .DS_Store
 .claude/*
+# Binaires des outils d’export 3D (Source2Viewer pèse 129 Mo, au-delà de la limite de 100 Mo de GitHub) : réinstaller avec bash tools/setup.sh
+tools/vendor/
+__pycache__/
+
+# Modèles d’aperçu (~125 Mo), recréés par : python3 tools/export_hero_models.py apercu tous
+tools/apercu/models/

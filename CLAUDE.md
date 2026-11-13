@@ -4,6 +4,7 @@ Projet de BUT MMI : traiter et afficher des données structurées de façon orig
 
 ## Stack et contraintes
 - HTML, CSS, JavaScript **natifs**, sans framework ni build. Des librairies JS ne sont autorisées que si on les décide ensemble (ex. `<model-viewer>` pour le .glb).
+- GSAP : envisagée pour les animations (pousse, flétrissement), décision reportée au moment de coder les animations. En attendant, rien n'en dépend.
 - Le projet **doit contenir des éléments SVG** : l'arbre est dessiné en SVG.
 - Pas de `type="module"` pour l'instant : les scripts sont chargés dans l'ordre (`api.js`, `render.js`, `tree.js`) et partagent la portée globale.
 - Mettre les réponses de l'API en cache (erreurs 429) et vérifier le CORS.
@@ -20,6 +21,8 @@ Pour un héros de Deadlock, un arbre vertical des ordres de montée des capacit�
 - `css/fontface.css` (polices), `css/style.css` (styles).
 - `js/api.js` (`fetchData`, `ENDPOINTS`), `js/render.js` (cartes des héros), `js/tree.js` (`buildTree`, trie des séquences).
 - `assets/fonts/` : `ValveOccult.woff2`, `ValvePulp.woff2`.
+- `tools/` : export des modèles 3D des héros depuis les fichiers du jeu (voir `tools/README.md`). `setup.sh` installe Source2Viewer CLI 20.1 et gltf-transform 4.5.1 dans `tools/vendor/` (ignoré par git : le binaire de Source2Viewer dépasse 100 Mo) ; `export_hero_models.py` (adapté du script de deadlock-api) a trois commandes : `clips`, `apercu`, `final` ; `models.json` = clips choisis par héros ; `apercu/` = page de comparaison avec le modèle de l'API (outil de développement).
+- `assets/models/<hero_id>.glb` : modèles 3D exportés (pas encore générés).
 
 ## Conventions
 - Commits en français, style conventionnel : `feat(charCards): …`, `fix(…): …`, `style: …`, `content(font): …`, `chore: …`. Un commit par changement logique. Ne committe que si on te le demande.
@@ -47,6 +50,7 @@ Pour un héros de Deadlock, un arbre vertical des ordres de montée des capacit�
 - **Arbre sur 16 niveaux** (16 points d'amélioration, 16 premiers éléments de `abilities[]`). Branches complètes : les 4 séquences les plus jouées. Rameaux courts : meilleur embranchement alternatif d'un nœud, gardé s'il pèse ≥ 3 % des parties du niveau, prolongé tant qu'il garde ≥ 45 % des parties du nœud précédent, 4 niveaux maximum. Ces seuils règlent la densité de l'arbre.
 - Les séquences commencent souvent par la même capacité deux fois : envisager de fusionner ces étapes.
 - Clic sur une branche : elle est mise en surbrillance (halo accent), le reste de l'arbre est assombri (~20 %), et ses statistiques s'affichent (séquence, victoires et écart au niveau 16, parties, joueurs, KDA moyen, temps du build complet et de l'ultime). Cliquer ailleurs désélectionne.
+- **Modèles 3D** : on n'utilise pas `models.hero_select` de l'API (un seul clip par héros, souvent une pose figée, arme parfois flottante). On exporte nos propres `.glb` depuis les fichiers du jeu (build 6861, clones APFS des `.vpk` dans `~/deadlock-vpk`) avec plusieurs clips par héros (~75 Ko chacun), textures en 1024 px. Clips provisoires : Rem `weapon_stand_idle_long` + `ui_hero_select`, Paige `out_of_combat_stand_idle` + `ui_hero_select`, à confirmer dans `tools/apercu/`. Les `.glb` (les nôtres comme ceux de l'API) sont compressés en meshopt : avec `<model-viewer>` 4.0.0, définir `self.ModelViewerElement = { meshoptDecoderLocation: 'https://cdn.jsdelivr.net/npm/meshoptimizer@0.22.0/meshopt_decoder.js' }` **avant** de charger son script, sinon le chargement échoue (« Cannot read properties of undefined (reading 'scene') »).
 
 ## Écrans prévus (maquette Figma)
 Figma : https://www.figma.com/design/kbTRjDE5I6H3emwYVLiY73 (fileKey `kbTRjDE5I6H3emwYVLiY73`, page « Maquette »).
@@ -69,7 +73,8 @@ Mesures des tags : hauteur 23 px, padding horizontal 8 px, rayon 999 px, fond co
 - `render.js` : la variable CSS est écrite `--rbg` (faute de frappe pour `--rgb`) ; le comparateur de `sort` ne renvoie pas `0` en cas d'égalité ; `innerHTML +=` dans la boucle est lent (construire une chaîne puis l'assigner une fois). Les cartes ne sont pas encore cliquables.
 - `api.js` : une branche par endpoint avec du code répété, `console.log` partout, **pas de cache**, pas de gestion du 429. À factoriser en une fonction `getJSON(url)` avec cache (mémoire + `sessionStorage`) et nouvel essai après un 429. L'appel des stats ajoute `game_mode=normal&min_matches=100` : à garder ou à ajuster après essais.
 - `tree.js` : `buildTree` construit le trie de toutes les séquences ; il reste à tronquer à 16 niveaux, à sélectionner branches et rameaux, puis à calculer épaisseur et couleur.
-- Rien encore pour : la vue héros, le rendu SVG, les animations, le modèle 3D, la navigation entre landing et vue héros.
+- Modèle 3D : outils d'export en place dans `tools/`, aperçu généré pour les 44 héros actifs (`tools/apercu/`, ~125 Mo, liste dans `tools/heros.json`) ; reste à choisir les clips, lancer `export_hero_models.py final` et afficher le `.glb` dans la fiche (`<model-viewer>` à valider).
+- Rien encore pour : la vue héros, le rendu SVG, les animations, la navigation entre landing et vue héros.
 
 ## Travail avec Claude (conversation + Claude Code)
 Le projet se travaille à deux endroits :

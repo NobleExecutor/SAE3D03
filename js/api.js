@@ -5,13 +5,12 @@ const ENDPOINTS = {
     ABILITY_STATS: "v1/analytics/ability-order-stats",
     LIST_ITEMS: "v1/assets/items"
 };
-const FRENCH_PARAM = "language=french";
 const loader = document.querySelector("#loader");
 
 async function fetchData(endpoint, heroId) {
     try {
         if (endpoint === ENDPOINTS.ALL_HEROES_ASSETS) {
-            const response = await fetch(`${API_URL}/${endpoint}?${FRENCH_PARAM}&only_active=true`);
+            const response = await fetch(`${API_URL}/${endpoint}?only_active=true`);
 
             if (!response.ok) {
                 throw new Error(`HTTP error: ${response.status}`);
@@ -24,7 +23,7 @@ async function fetchData(endpoint, heroId) {
         }
 
         else if (endpoint === ENDPOINTS.HERO_ASSETS) {
-            const response = await fetch(`${API_URL}/${endpoint}/${heroId}?${FRENCH_PARAM}`);
+            const response = await fetch(`${API_URL}/${endpoint}/${heroId}`);
 
             if (!response.ok) {
                 throw new Error(`HTTP error: ${response.status}`);
@@ -50,7 +49,7 @@ async function fetchData(endpoint, heroId) {
         }
 
         else if (endpoint === ENDPOINTS.LIST_ITEMS) {
-            const response = await fetch(`${API_URL}/${endpoint}?${FRENCH_PARAM}`);
+            const response = await fetch(`${API_URL}/${endpoint}`);
 
             if (!response.ok) {
                 throw new Error(`HTTP error: ${response.status}`);

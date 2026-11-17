@@ -8,8 +8,8 @@ const getAbilityStats = (id) => getJSON("v1/analytics/ability-order-stats", { he
 
 async function getJSON(endpoint, params = {}) {
     const query = Object.entries(params)
-    .map(([key, value]) => `${key}=${value}`)
-    .join("&");
+        .map(([key, value]) => `${key}=${value}`)
+        .join("&");
 
     const url = query ? `${API_URL}/${endpoint}?${query}` : `${API_URL}/${endpoint}`;
 
@@ -17,7 +17,7 @@ async function getJSON(endpoint, params = {}) {
         const response = await fetch(url);
 
         if (!response.ok) {
-            throw new Error(`HTTP ${response.status} sur ${endpoint}`);
+            throw new Error(`HTTP ${response.status} on ${endpoint}`);
         }
 
         const data = await response.json();

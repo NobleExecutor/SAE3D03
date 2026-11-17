@@ -20,7 +20,7 @@ function updateCount(visible, total) {
     if (!characters) return;
 
     // Trie les personnages par ordre alphabétique (gère les accents : Céleste, Rôdeur…)
-    characters.sort((a, b) => a.name.localeCompare(b.name, "fr"));
+    characters.sort((a, b) => a.name.localeCompare(b.name, "en"));
 
     // Construit toutes les cartes en une seule chaîne, puis les insère d'un coup
     let html = "";

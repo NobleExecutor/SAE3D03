@@ -1,65 +1,29 @@
-const API_URL = "https://api.deadlock-api.com";
-const ENDPOINTS = {
-    ALL_HEROES_ASSETS: "v1/assets/heroes/",
-    HERO_ASSETS: "v1/assets/heroes",
-    ABILITY_STATS: "v1/analytics/ability-order-stats",
-    LIST_ITEMS: "v1/assets/items"
-};
 const loader = document.querySelector("#loader");
 
-async function fetchData(endpoint, heroId) {
+const API_URL = "https://api.deadlock-api.com";
+const getHeroes = () => getJSON("v1/assets/heroes", { only_active: true });
+const getHero = (id) => getJSON(`v1/assets/heroes/${id}`);
+const getItem = (n) => getJSON(`v1/assets/items/${n}`);
+const getAbilityStats = (id) => getJSON("v1/analytics/ability-order-stats", { hero_id: id, game_mode: "normal", min_matches: 100 });
+
+async function getJSON(endpoint, params = {}) {
+    const query = Object.entries(params)
+    .map(([key, value]) => `${key}=${value}`)
+    .join("&");
+
+    const url = query ? `${API_URL}/${endpoint}?${query}` : `${API_URL}/${endpoint}`;
+
     try {
-        if (endpoint === ENDPOINTS.ALL_HEROES_ASSETS) {
-            const response = await fetch(`${API_URL}/${endpoint}?only_active=true`);
+        const response = await fetch(url);
 
-            if (!response.ok) {
-                throw new Error(`HTTP error: ${response.status}`);
-            }
-
-            const data = await response.json();
-            console.log(data);
-
-            return data;
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status} sur ${endpoint}`);
         }
 
-        else if (endpoint === ENDPOINTS.HERO_ASSETS) {
-            const response = await fetch(`${API_URL}/${endpoint}/${heroId}`);
+        const data = await response.json();
+        console.log(data);
 
-            if (!response.ok) {
-                throw new Error(`HTTP error: ${response.status}`);
-            }
-
-            const data = await response.json();
-            console.log(data);
-
-            return data;
-        }
-
-        else if (endpoint === ENDPOINTS.ABILITY_STATS) {
-            const response = await fetch(`${API_URL}/${endpoint}/?hero_id=${heroId}&game_mode=normal&min_matches=100`);
-
-            if (!response.ok) {
-                throw new Error(`HTTP error: ${response.status}`);
-            }
-
-            const data = await response.json();
-            console.log(data);
-
-            return data;
-        }
-
-        else if (endpoint === ENDPOINTS.LIST_ITEMS) {
-            const response = await fetch(`${API_URL}/${endpoint}`);
-
-            if (!response.ok) {
-                throw new Error(`HTTP error: ${response.status}`);
-            }
-
-            const data = await response.json();
-            console.log(data);
-
-            return data;
-        }
+        return data;
     }
 
     catch (error) {

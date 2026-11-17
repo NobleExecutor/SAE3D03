@@ -12,7 +12,7 @@ function updateCount(visible, total) {
 
 (async function renderCharCards() {
     // only_active=true ne renvoie déjà que les héros jouables en jeu
-    const characters = await fetchData(ENDPOINTS.ALL_HEROES_ASSETS);
+    const characters = await getHeroes();
     const charGrid = document.querySelector(".char-grid");
     const searchInput = document.querySelector(".search-input");
     const emptyMessage = document.querySelector(".char-empty");

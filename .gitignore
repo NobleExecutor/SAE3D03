@@ -7,3 +7,6 @@ __pycache__/
 
 # Modèles d’aperçu (~125 Mo), recréés par : python3 tools/export_hero_models.py apercu tous
 tools/apercu/models/
+
+# Liste complète des clips d’animation, recréée par : python3 tools/export_hero_models.py clips tous
+tools/clips.json

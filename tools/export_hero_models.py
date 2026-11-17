@@ -343,22 +343,35 @@ def tous_les_clips(modele: str) -> list[str]:
     certains héros (Dame Geist : plus de 3,7 Go). Les clips sont des fichiers
     `.vnmclip` rangés dans un dossier `clips/` (parfois `clip/`), à côté du
     modèle, de son squelette (`.vnmskel`) ou ailleurs : on prend les dossiers
-    des clips cités par les graphes d'animation du modèle (`hero_ui.vnmgraph+<héros>`…),
-    puis tous les clips de ces dossiers.
+    des clips cités par les graphes d'animation du modèle (`hero_ui.vnmgraph+<héros>`…)
+    et par leurs sous-graphes, puis tous les clips de ces dossiers. Les anciens
+    modèles (ex. Seven) ont en plus des séquences intégrées, listées dans le bloc ASEQ.
     """
     rerl = s2v("-f", f"{modele}_c", "-b", "RERL").stdout
     bases = {str(PurePosixPath(modele).parent)} | {
         str(PurePosixPath(m).parent) for m in re.findall(r'"([^"]+\.vnmskel)"', rerl)
     }
     dossiers = {f"{b}/clips" for b in bases}
-    for graphe in set(re.findall(r'"([^"]+\.vnmgraph)"', rerl)):
+    # Les graphes renvoient à des sous-graphes (hero.vnmgraph+<héros> -> hero_playercontrol…,
+    # hero_cosmetic…) qui citent la plupart des clips : on les parcourt tous.
+    a_lire = set(re.findall(r'"([^"]+\.vnmgraph)"', rerl))
+    lus = set()
+    while a_lire:
+        graphe = a_lire.pop()
+        lus.add(graphe)
         cites = s2v("-f", f"{graphe}_c", "-b", "RERL").stdout
         dossiers |= {str(PurePosixPath(c).parent) for c in re.findall(r'"([^"]+\.vnmclip)"', cites)}
+        a_lire |= set(re.findall(r'"([^"]+\.vnmgraph)"', cites)) - lus
     clips = set()
     for f in liste_vpk():
         # Les variantes « clip.vnmclip+non_additive » sont des doublons compilés : ignorées.
         if f.endswith(".vnmclip_c") and "+" not in f and str(PurePosixPath(f).parent) in dossiers:
             clips.add(PurePosixPath(f).name.removesuffix(".vnmclip_c"))
+    # Séquences intégrées au modèle (anciens modèles, ex. Seven) : bloc ASEQ.
+    aseq = s2v("-f", f"{modele}_c", "-b", "ASEQ").stdout
+    noms = re.search(r"m_localSequenceNameArray\s*=\s*\[([^\]]*)\]", aseq)
+    if noms:
+        clips |= set(re.findall(r'"([^"]+)"', noms.group(1))) - {"tools_preview", "ref"}
     return sorted(clips)
 
 

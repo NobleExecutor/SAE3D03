@@ -73,7 +73,7 @@ Mesures des tags : hauteur 23 px, padding horizontal 8 px, rayon 999 px, fond co
 - `render.js` : la variable CSS est écrite `--rbg` (faute de frappe pour `--rgb`) ; le comparateur de `sort` ne renvoie pas `0` en cas d'égalité ; `innerHTML +=` dans la boucle est lent (construire une chaîne puis l'assigner une fois). Les cartes ne sont pas encore cliquables.
 - `api.js` : une branche par endpoint avec du code répété, `console.log` partout, **pas de cache**, pas de gestion du 429. À factoriser en une fonction `getJSON(url)` avec cache (mémoire + `sessionStorage`) et nouvel essai après un 429. L'appel des stats ajoute `game_mode=normal&min_matches=100` : à garder ou à ajuster après essais.
 - `tree.js` : `buildTree` construit le trie de toutes les séquences ; il reste à tronquer à 16 niveaux, à sélectionner branches et rameaux, puis à calculer épaisseur et couleur.
-- Modèle 3D : outils d'export en place dans `tools/`, aperçu généré pour les 44 héros actifs (`tools/apercu/`, ~125 Mo, liste dans `tools/heros.json`) ; reste à choisir les clips, lancer `export_hero_models.py final` et afficher le `.glb` dans la fiche (`<model-viewer>` à valider).
+- Modèle 3D : outils d'export en place dans `tools/`, aperçu généré pour les 44 héros actifs (`tools/apercu/`, ~190 Mo, liste dans `tools/heros.json`) ; reste à choisir les clips, lancer `export_hero_models.py final` et afficher le `.glb` dans la fiche (`<model-viewer>` à valider).
 - Rien encore pour : la vue héros, le rendu SVG, les animations, la navigation entre landing et vue héros.
 
 ## Travail avec Claude (conversation + Claude Code)

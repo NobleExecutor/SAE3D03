@@ -1,6 +1,6 @@
 # SAE3D03 — Arbre vivant des builds (Deadlock)
 
-Projet de BUT MMI : traiter et afficher des données structurées de façon originale et artistique. Travail solo. Langue du projet, des commentaires et des commits : **français**.
+Projet de BUT MMI : traiter et afficher des données structurées de façon originale et artistique. Travail solo. Langue du projet, des commentaires et des commits : **français**. Seuls les textes renvoyés par l'API (noms, descriptions, lore) restent en anglais.
 
 ## Stack et contraintes
 - HTML, CSS, JavaScript **natifs**, sans framework ni build. Des librairies JS ne sont autorisées que si on les décide ensemble (ex. `<model-viewer>` pour le .glb).
@@ -29,12 +29,12 @@ Pour un héros de Deadlock, un arbre vertical des ordres de montée des capacit�
 - Indentation 4 espaces. Noms de classes en kebab-case (`char-card`, `char-tags`).
 - Les couleurs et espacements communs sont des variables CSS dans `:root`.
 
-## API (base `https://api.deadlock-api.com`, `language=french` pour les textes)
+## API (base `https://api.deadlock-api.com`, textes en anglais : pas de paramètre `language`)
 | Besoin | Endpoint |
 |---|---|
-| Liste des héros | `GET /v1/assets/heroes?only_active=true&language=french` |
+| Liste des héros | `GET /v1/assets/heroes?only_active=true` |
 | Détail d'un héros | `GET /v1/assets/heroes/{id}` (tags, `colors.style_hex`, `colors.style` en RGB, `images.*`, `models.hero_select` en .glb, `items.signature1..4`) |
-| Détail d'une capacité | `GET /v1/assets/items/{class_name}?language=french` (`id`, `name`, `description` en HTML, `image`) |
+| Détail d'une capacité | `GET /v1/assets/items/{class_name}` (`id`, `name`, `description` en HTML, `image`) |
 | Ordres de montée | `GET /v1/analytics/ability-order-stats?hero_id={id}` (par séquence : `abilities[]`, `avg_upgrade_times_s`, `wins`, `losses`, `matches`, `players`, `total_kills/deaths/assists`) |
 
 - **Lien clé** : l'`id` d'une capacité (items) est la valeur présente dans `abilities[]` des stats.

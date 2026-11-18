@@ -12,22 +12,37 @@ async function loadHero(id) {
     // On range les abilités dans l'ordre
     const signatures = [1, 2, 3, 4].map(n => hero.items[`signature${n}`]);
 
-    const abilities = {};
-    signatures.forEach((signature, index) => {
-        const item = abilityItems.find(i => i.class_name === signature);
+    const abilities = signatures
+        .map((signature, index) => {
+            const item = abilityItems.find(i => i.class_name === signature);
 
-        if (!item) {
-            console.warn(`Capacité introuvable pour signature${index + 1} : ${signature}`);
-            return;
-        }
+            if (!item) {
+                console.warn(`Capacité introuvable pour signature${index + 1} : ${signature}`);
+                return null;
+            }
 
-        abilities[item.id] = {
-            slot: index + 1,
-            name: item.name,
-            image: item.image,
-            description: item.description
-        };
-    });
+            return {
+                id: item.id,
+                slot: index + 1,
+                name: item.name,
+                image: item.image,
+                description: item.description
+            };
+            
+            // Un objet JS ne garde pas l'ordre dans lequel ses clés sont ajoutés, mais les tries (ici numériquement) Alternative : new Map() ?
+            /* abilities[item.id] = {
+                slot: index + 1,
+                name: item.name,
+                image: item.image,
+                description: item.description
+            }; */
 
-    return { hero, abilities, stats };
+
+    })
+    .filter(Boolean);
+
+    // Pour plus tard : utiliser une Map pour la création de l'arbre (les noeuds se reconnaîtront par ID d'abilité)
+    // const abilitiesById = new Map(abilities.map(a => [a.id, a]));
+
+    return { hero, abilities, stats }; // <- ajouter abilitiesById pour la création de l'arbre
 }

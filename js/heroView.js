@@ -80,26 +80,17 @@ function drawTreeSkeleton(svg, hero) {
     }));
 }
 
-// Retire les icônes SVG de la description HTML d'une capacité
-function cleanDescription(html) {
-    const template = document.createElement("template");
-    template.innerHTML = html;
-    template.content.querySelectorAll("svg").forEach(svg => svg.remove());
-    return template.innerHTML;
-}
-
 function renderAbilities(list, abilities) {
-    let html = Object.values(abilities)
-    .sort(abilities.slot)
+    let html = abilities
     .map((ability) => 
                     `<li class="ability">
                         <img class="ability-icon" src="${ability.image}" alt="${ability.name}">
                         <div class="ability-text">
                             <h3 class="ability-name">${ability.name}</h3>
-                            <p class="ability-desc">${ability.slot === 4 ? "Ultime · " : ""}${cleanDescription(ability.description.desc)}</p>
-                        </div>
+                            <p class="ability-desc">${ability.slot === 4 ? "Ultime · " : ""}${ability.description.desc ? ability.description.desc : "Passive: " + ability.description.passive + "<br><br>" + ability.description.active}</p>
+                        </div>  
                     </li>`
-    );
+    ).join("");
     list.innerHTML = html;
 }
 

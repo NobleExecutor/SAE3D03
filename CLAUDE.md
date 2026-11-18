@@ -35,10 +35,11 @@ Pour un héros de Deadlock, un arbre vertical des ordres de montée des capacit�
 | Liste des héros | `GET /v1/assets/heroes?only_active=true` |
 | Détail d'un héros | `GET /v1/assets/heroes/{id}` (tags, `colors.style_hex`, `colors.style` en RGB, `images.*`, `models.hero_select` en .glb, `items.signature1..4`) |
 | Détail d'une capacité | `GET /v1/assets/items/{class_name}` (`id`, `name`, `description` en HTML, `image`) |
+| Capacités d'un héros (étape 3) | `GET /v1/assets/items/by-hero-id/{id}` : tous les items du héros en une requête, remplace les 4 appels `items/{class_name}`. Structure de la réponse à vérifier dans la console avant d'écrire `loadHero` (filtrer pour ne garder que les 4 capacités de `items.signature1..4`). |
 | Ordres de montée | `GET /v1/analytics/ability-order-stats?hero_id={id}` (par séquence : `abilities[]`, `avg_upgrade_times_s`, `wins`, `losses`, `matches`, `players`, `total_kills/deaths/assists`) |
 
 - **Lien clé** : l'`id` d'une capacité (items) est la valeur présente dans `abilities[]` des stats.
-- Les 4 capacités d'un héros : `items.signature1..4` du détail héros, résolues via `/v1/assets/items/{class_name}`.
+- Les 4 capacités d'un héros : `items.signature1..4` du détail héros (noms internes), retrouvées dans la réponse de `items/by-hero-id/{id}` ; repli : `/v1/assets/items/{class_name}` une par une.
 - Héros de référence pour les tests : **Rem (79)**, **Paige (67)**.
 - Limite : les stats sont **par séquence**. Pour un préfixe ou un rameau, additionner `wins`, `matches`, `kills`… de toutes les séquences qui passent par ce préfixe ; moyenne pondérée pour les temps.
 

@@ -1,6 +1,5 @@
 const landing = document.querySelector(".landing");
 const heroView = document.querySelector("#heroView");
-const testP = document.querySelector("#heroIdTest");
 
 // Fonction de routing pour récupérer l'ID héro dans l'URL sans avoir à changer de page
 async function route() {
@@ -9,16 +8,16 @@ async function route() {
     if (!match) {
         landing.hidden = false;
         heroView.hidden = true;
+        document.title = "SAE3D03";
         return;
     }
 
-    const hero = await getHero(match[1]);
-    heroView.style.setProperty("--hex", hero.colors.style_hex);
-    heroView.style.setProperty("--rgb", hero.colors.style.join(" "));
-    testP.textContent = hero.name;
+    const heroInfo = await loadHero(match[1]);
+    renderHeroView(heroView, heroInfo.hero, heroInfo.abilities);
 
     landing.hidden = true;
     heroView.hidden = false;
+    window.scrollTo(0, 0);
 }
 
 window.addEventListener("hashchange", route);

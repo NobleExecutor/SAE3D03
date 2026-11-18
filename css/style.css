@@ -211,6 +211,355 @@ h1 {
     font-size: 14px;
 }
 
+/* ---------- Vue héros ---------- */
+
+.hero-view {
+    min-height: 100vh;
+    padding: 32px 40px 32px;
+    background: linear-gradient(180deg, rgb(var(--rgb) / 12%) 0, transparent 520px);
+}
+
+.hero-view[hidden] {
+    display: none;
+}
+
+.hero-topbar,
+.hero-layout {
+    max-width: 1360px;
+    margin: 0 auto;
+}
+
+/* Barre haute : retour à gauche, filtres à droite */
+.hero-topbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.back-link {
+    color: var(--hex);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.back-link:hover,
+.back-link:focus-visible {
+    text-decoration: underline;
+}
+
+.hero-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.filter-tag {
+    padding: 5px 12px;
+    background-color: rgb(var(--rgb) / 14%);
+    border: 1px solid rgb(var(--rgb) / 70%);
+    border-radius: 999px;
+    font-family: var(--font-label);
+    font-size: 12px;
+}
+
+/* Arbre à gauche, fiche de 400 px à droite */
+.hero-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 400px;
+    align-items: start;
+    gap: 24px;
+    margin-top: 24px;
+}
+
+/* -- Panneau de l'arbre -- */
+
+.tree-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 28px;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+}
+
+.tree-header {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.tree-header h2 {
+    font-family: var(--font-title);
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.tree-header p {
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+.tree-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.tree-grid line {
+    stroke: var(--border);
+    stroke-dasharray: 4 6;
+}
+
+.tree-level {
+    fill: var(--text-muted);
+    font-size: 11px;
+    text-anchor: end;
+}
+
+.tree-axis {
+    fill: var(--text-muted);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-anchor: middle;
+}
+
+.tree-trunk {
+    stroke: var(--border);
+    stroke-width: 24;
+}
+
+.tree-root {
+    fill: var(--bg-primary);
+    stroke: var(--hex);
+    stroke-width: 3;
+}
+
+.tree-placeholder {
+    fill: var(--text-muted);
+    font-family: var(--font-label);
+    font-size: 16px;
+    text-anchor: middle;
+}
+
+/* Légende sous l'arbre */
+.tree-legend {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 22px;
+    align-self: flex-start;
+    padding: 10px 14px;
+    background-color: rgb(14 15 18 / 92%);
+    border-radius: 10px;
+    color: var(--text-muted);
+    font-size: 11px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.legend-bar {
+    width: 22px;
+    height: var(--h);
+    background-color: var(--text-muted);
+    border-radius: 999px;
+}
+
+.legend-small {
+    font-size: 10px;
+}
+
+/* Rouge → jaune → vert : réservé au taux de victoire */
+.legend-gradient {
+    width: 90px;
+    height: 8px;
+    background: linear-gradient(90deg, #D9544F, #E8C447, #5CB85C);
+    border-radius: 4px;
+}
+
+/* -- Fiche du héros -- */
+
+.hero-sheet {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    padding: 24px;
+    background:
+        linear-gradient(180deg, rgb(var(--rgb) / 16%) 0, rgb(var(--rgb) / 0%) 40%),
+        var(--bg-secondary);
+    border: 1px solid rgb(var(--rgb) / 55%);
+    border-radius: 16px;
+}
+
+.hero-identity {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.hero-eyebrow {
+    color: var(--hex);
+    font-family: var(--font-label);
+    font-size: 11px;
+}
+
+.hero-name {
+    font-size: 40px;
+}
+
+.hero-accent-bar {
+    width: 64px;
+    height: 4px;
+    background-color: var(--hex);
+    border-radius: 2px;
+}
+
+.hero-tags {
+    justify-content: flex-start;
+    gap: 6px;
+}
+
+.hero-tags .char-tag {
+    height: 27px;
+    padding: 0 12px;
+    font-size: 12px;
+}
+
+/* Modèle 3D (<model-viewer> est inline-block 300 × 150 px par défaut) */
+.hero-model {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 260px;
+    margin: 0;
+    overflow: hidden;
+    background: linear-gradient(143deg, rgb(var(--rgb) / 90%) 14%, rgb(var(--rgb) / 25%) 57%, var(--bg-primary) 86%);
+    border: 1px solid rgb(var(--rgb) / 50%);
+    border-radius: 12px;
+}
+
+.hero-model-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 12px;
+    object-fit: contain;
+}
+
+.hero-model-badge {
+    position: absolute;
+    top: 9px;
+    left: 9px;
+    padding: 4px 8px;
+    background-color: rgb(14 15 18 / 80%);
+    border-radius: 6px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.hero-lore {
+    font-size: 12px;
+    line-height: 1.4;
+    color: var(--text-muted);
+}
+
+/* Stats globales : 3 tuiles */
+.hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin: 0;
+}
+
+.hero-stat {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 2px;
+    padding: 10px 12px;
+    background-color: var(--bg-primary);
+    border-top: 3px solid rgb(var(--rgb) / 80%);
+    border-radius: 10px;
+}
+
+.hero-stat dd {
+    margin: 0;
+    color: var(--hex);
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.hero-stat dt {
+    color: var(--text-muted);
+    font-size: 11px;
+}
+
+.hero-sheet-title {
+    font-family: var(--font-title);
+    font-size: 16px;
+    font-weight: normal;
+}
+
+/* Liste des 4 capacités */
+.ability-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.ability {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.ability-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    background-color: var(--bg-primary);
+    border: 2px solid var(--hex);
+    border-radius: 50%;
+}
+
+.ability-text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.ability-name {
+    margin: 0;
+    font-family: var(--font-title);
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.ability-desc {
+    color: var(--text-muted);
+    font-size: 12px;
+}
+
+@media (max-width: 1100px) {
+    .hero-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* ---------- Petits écrans ---------- */
 
 @media (max-width: 640px) {
@@ -229,5 +578,14 @@ h1 {
     .char-grid {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
         gap: 16px;
+    }
+
+    .hero-view {
+        padding: 24px 16px;
+    }
+
+    .tree-panel,
+    .hero-sheet {
+        padding: 16px;
     }
 }

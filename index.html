@@ -8,7 +8,8 @@
         type="image/x-icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500&display=swap">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="css/fontface.css">
     <link rel="stylesheet" href="css/style.css">
     <title>SAE3D03</title>
@@ -42,16 +43,98 @@
         <p class="char-empty" hidden>Aucun héros ne correspond à cette recherche.</p>
     </main>
 
-    <section id="heroView">
-        <h1>Test</h1>
-        <p id="heroIdTest"></p>
+    <section id="heroView" class="hero-view" hidden>
+        <!-- Barre haute : retour et filtres (statiques pour l'instant) -->
+        <nav class="hero-topbar">
+            <a class="back-link" href="#">←&nbsp;&nbsp;Tous les héros</a>
+            <ul class="hero-filters">
+                <li class="filter-tag">Rang : Tous</li>
+                <li class="filter-tag">Patch actuel</li>
+                <li class="filter-tag">16 points</li>
+            </ul>
+        </nav>
+
+        <div class="hero-layout">
+            <!-- Arbre de montée des capacités -->
+            <article class="tree-panel">
+                <header class="tree-header">
+                    <h2>Ordre de montée des capacités</h2>
+                    <p>16 points = toutes les capacités au maximum. 4 builds complets les plus joués, et les variantes
+                        abandonnées en rameaux courts.</p>
+                </header>
+
+                <div class="tree-stage">
+                    <svg class="tree-svg" viewBox="0 0 880 1060" role="img"
+                        aria-label="Arbre de montée des capacités (en préparation)"></svg>
+                </div>
+
+                <div class="tree-legend">
+                    <div class="legend-item">
+                        <span class="legend-bar" style="--h: 3px"></span>
+                        <span class="legend-bar" style="--h: 7px"></span>
+                        <span class="legend-bar" style="--h: 13px"></span>
+                        <span>Épaisseur = part des parties au niveau</span>
+                    </div>
+                    <div class="legend-item">
+                        <span class="legend-small">−3</span>
+                        <span class="legend-gradient"></span>
+                        <span>+3 pts vs moyenne du niveau</span>
+                    </div>
+                    <span class="legend-item">Terne et tombante : &lt; −1,5 pt</span>
+                </div>
+            </article>
+
+            <!-- Fiche du héros -->
+            <aside class="hero-sheet">
+                <div class="hero-identity">
+                    <p class="hero-eyebrow"></p>
+                    <h1 class="hero-name"></h1>
+                    <span class="hero-accent-bar"></span>
+                    <div class="char-tags hero-tags"></div>
+                </div>
+
+                <!-- Placeholder du modèle 3D : image de la carte du héros en attendant les .glb -->
+                <model-viewer class="hero-model" src="" ar ar-modes="webxr scene-viewer quick-look" camera-controls
+                    tone-mapping="neutral" shadow-intensity="1" autoplay> </model-viewer>
+
+
+                <p class="hero-lore"></p>
+
+                <dl class="hero-stats">
+                    <div class="hero-stat">
+                        <dt>Victoires</dt>
+                        <dd>—</dd>
+                    </div>
+                    <div class="hero-stat">
+                        <dt>Parties</dt>
+                        <dd>—</dd>
+                    </div>
+                    <div class="hero-stat">
+                        <dt>Séquences</dt>
+                        <dd>—</dd>
+                    </div>
+                </dl>
+
+                <h2 class="hero-sheet-title">Compétences</h2>
+                <ol class="ability-list"></ol>
+            </aside>
+        </div>
     </section>
 
+    <!-- Les .glb sont compressés en meshopt : le décodeur doit être déclaré AVANT model-viewer,
+         sinon le chargement échoue sans erreur en console (événement « error » sur l'élément) -->
+    <script>
+        self.ModelViewerElement = {
+            meshoptDecoderLocation: "https://cdn.jsdelivr.net/npm/meshoptimizer@0.22.0/meshopt_decoder.js"
+        };
+    </script>
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.4.0/model-viewer.min.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/bouncy.js"></script>
     <script src="js/api.js"></script>
     <script src="js/render.js"></script>
     <script src="js/hero.js"></script>
     <script src="js/tree.js"></script>
+    <script src="js/heroView.js"></script>
     <script src="js/main.js"></script>
 </body>
 

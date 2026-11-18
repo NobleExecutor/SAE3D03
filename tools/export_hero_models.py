@@ -290,7 +290,25 @@ def exporter_brut(modele: str, clips: list[str] | None, dossier: Path, materiaux
         if not trouves:
             raise RuntimeError(f"export raté pour {modele} : {r.stderr.strip()[-500:]}")
         glb = trouves[0]
+    if materiaux and ORM_EN_BGR:
+        corriger_orm(glb)
     return glb
+
+
+# Source2Viewer compose lui-même les textures ORM (R occlusion, G rugosité, B métal) ;
+# sous macOS il les écrit en BGR (constaté avec la 20.1) : modèle tout métallique, très
+# sombre. Sous Linux l'ordre est bon ; Windows n'a pas été vérifié.
+# Variable DEADLOCK_ORM_BGR=1 ou 0 pour forcer.
+ORM_EN_BGR = os.environ.get("DEADLOCK_ORM_BGR", "1" if SYSTEME == "Darwin" else "0") == "1"
+
+
+def corriger_orm(glb: Path) -> None:
+    """Remet dans l'ordre RGB les textures ORM de l'export brut (PNG à côté du .glb)."""
+    gltf, _ = read_glb(glb)
+    fichiers = sorted({str(glb.parent / i["uri"]) for i in gltf.get("images", [])
+                       if "_orm_" in i.get("uri", "") and (glb.parent / i["uri"]).is_file()})
+    if fichiers:
+        subprocess.run(["node", str(TOOLS / "corriger_orm.cjs"), *fichiers], check=True)
 
 
 def nettoyer(glb: Path, caches: set[str], ordre: list[str] | None = None) -> list[str]:
@@ -301,6 +319,12 @@ def nettoyer(glb: Path, caches: set[str], ordre: list[str] | None = None) -> lis
         if "mesh" in node and node.get("name", "").rsplit(".", 1)[-1] in caches:
             del node["mesh"]
             node.pop("skin", None)
+    # Sans texture de métal, glTF suppose metallicFactor = 1 (tout métallique, donc
+    # sombre) : les matériaux du jeu sans masque de métal ne sont pas métalliques.
+    for mat in gltf.get("materials", []):
+        pbr = mat.setdefault("pbrMetallicRoughness", {})
+        if "metallicRoughnessTexture" not in pbr:
+            pbr.setdefault("metallicFactor", 0)
     vus, anims = set(), []
     for a in gltf.get("animations", []):
         court = nom_court(a.get("name", ""))

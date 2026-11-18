@@ -2,8 +2,9 @@ const landing = document.querySelector(".landing");
 const heroView = document.querySelector("#heroView");
 const testP = document.querySelector("#heroIdTest");
 
+// Fonction de routing pour récupérer l'ID héro dans l'URL sans avoir à changer de page
 async function route() {
-    const match = location.hash.match(/^#hero-(\d+)$/);
+    const match = location.hash.match(/^#hero-(\d+)$/); // -> https://regex101.com
 
     if (!match) {
         landing.hidden = false;

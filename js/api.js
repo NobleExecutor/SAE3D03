@@ -8,6 +8,7 @@ const getItemsByHero = (id) => getJSON(`v1/assets/items/by-hero-id/${id}`);
 const getAbilityStats = (id) => getJSON("v1/analytics/ability-order-stats", { hero_id: id, game_mode: "normal", min_matches: 100 });
 
 async function getJSON(endpoint, params = {}) {
+    // On transforme les paramètres stockés dans un objet en un string
     const query = Object.entries(params)
         .map(([key, value]) => `${key}=${value}`)
         .join("&");
@@ -31,6 +32,7 @@ async function getJSON(endpoint, params = {}) {
         throw error;
     }
 
+    // Enlève le loader une fois la réponse reçu (réussis ou non) (à déplacer plus tard)
     finally {
         loader.hidden = true;
     }

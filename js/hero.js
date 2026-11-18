@@ -1,11 +1,15 @@
 async function loadHero(id) {
+    // Promise.all permet d'attendre la réponse des 3 requêtes avant de procéder
     const [hero, items, stats] = await Promise.all([
         getHero(id),
         getItemsByHero(id),
         getAbilityStats(id)
     ]);
 
+    // On se débarasse du premier item du tableau, pas besoin
     const abilityItems = items.slice(1);
+
+    // On range les abilités dans l'ordre
     const signatures = [1, 2, 3, 4].map(n => hero.items[`signature${n}`]);
 
     const abilities = {};

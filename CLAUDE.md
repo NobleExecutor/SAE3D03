@@ -19,7 +19,7 @@ Pour un héros de Deadlock, un arbre vertical des ordres de montée des capacit�
 ## Structure du dépôt
 - `index.html` : page unique (landing pour l'instant).
 - `css/fontface.css` (polices), `css/style.css` (styles).
-- `js/api.js` (`fetchData`, `ENDPOINTS`), `js/render.js` (cartes des héros), `js/tree.js` (`buildTree`, trie des séquences).
+- `js/api.js` (`getJSON` et raccourcis `getHero`, `getAbilityStats`…), `js/render.js` (cartes des héros), `js/hero.js` (`loadHero`), `js/tree.js` (`buildTree`, trie des séquences), `js/heroView.js` (`renderHeroView` : fiche + squelette SVG de l'arbre), `js/main.js` (routing `#hero-{id}`).
 - `assets/fonts/` : `ValveOccult.woff2`, `ValvePulp.woff2`.
 - `tools/` : export des modèles 3D des héros depuis les fichiers du jeu (voir `tools/README.md`). `setup.sh` installe Source2Viewer CLI 20.1 et gltf-transform 4.5.1 dans `tools/vendor/` (ignoré par git : le binaire de Source2Viewer dépasse 100 Mo) ; `export_hero_models.py` (adapté du script de deadlock-api) a trois commandes : `clips`, `apercu`, `final` ; `models.json` = clips choisis par héros ; `apercu/` = page de comparaison avec le modèle de l'API (outil de développement).
 - `assets/models/<hero_id>.glb` : modèles 3D exportés (pas encore générés).
@@ -75,7 +75,8 @@ Mesures des tags : hauteur 23 px, padding horizontal 8 px, rayon 999 px, fond co
 - `api.js` : une branche par endpoint avec du code répété, `console.log` partout, **pas de cache**, pas de gestion du 429. À factoriser en une fonction `getJSON(url)` avec cache (mémoire + `sessionStorage`) et nouvel essai après un 429. L'appel des stats ajoute `game_mode=normal&min_matches=100` : à garder ou à ajuster après essais.
 - `tree.js` : `buildTree` construit le trie de toutes les séquences ; il reste à tronquer à 16 niveaux, à sélectionner branches et rameaux, puis à calculer épaisseur et couleur.
 - Modèle 3D : outils d'export en place dans `tools/`, aperçu généré pour les 44 héros actifs (`tools/apercu/`, ~190 Mo, liste dans `tools/heros.json`) ; reste à choisir les clips, lancer `export_hero_models.py final` et afficher le `.glb` dans la fiche (`<model-viewer>` à valider).
-- Rien encore pour : la vue héros, le rendu SVG, les animations, la navigation entre landing et vue héros.
+- Vue héros (`section#heroView`) : mise en page de la maquette en place. Données réelles : nom, numéro, tags, accent, lore (1er paragraphe), image `icon_hero_card` à la place du modèle 3D. Placeholders : stats globales (« — »), 4 capacités, arbre (grille des 16 niveaux, tronc et racine seulement). Filtres de la barre haute statiques.
+- Rien encore pour : le rendu des branches, les animations, la sélection de branche.
 
 ## Travail avec Claude (conversation + Claude Code)
 Le projet se travaille à deux endroits :
